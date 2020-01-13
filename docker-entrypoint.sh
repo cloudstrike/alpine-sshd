@@ -7,9 +7,11 @@ if [ -z "${AUTHORIZED_KEYS}" ]; then
 fi
 
 adduser --disabled-password --gecos "" "${SSH_USER}"
+mkdir -p /home/"${SSH_USER}"/.ssh
 
 echo "Populating /root/.ssh/authorized_keys with the key downloaded from AUTHORIZED_KEYS env variable ..."
 curl -LSo /home/"${SSH_USER}"/.ssh/authorized_keys "${AUTHORIZED_KEYS}"
+chown -R "${SSH_USER}":"${SSH_USER}" /home/"${SSH_USER}"/.ssh
 
 # Execute the CMD from the Dockerfile:
 exec "$@"
