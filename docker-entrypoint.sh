@@ -3,7 +3,7 @@ SSH_USER=${SSH_USER:-"toronz"}
 if [ -z "${AUTHORIZED_KEYS}" ]; then
   echo "Missing ssh public key URL inside AUTHORIZED_KEYS env variable. Defaulting to Github SSH public key using SSH_USER..."
   AUTHORIZED_KEYS="https://github.com/${SSH_USER}.keys"
-  exit 1
+  echo "Fetching public key from ${AUTHORIZED_KEYS}..."
 fi
 
 adduser --disabled-password --gecos "" "${SSH_USER}"
