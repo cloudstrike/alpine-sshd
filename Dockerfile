@@ -7,6 +7,8 @@ RUN  apk update \
     && chmod 0700 /root/.ssh \
     && ssh-keygen -A \
     && sed -i s/^#PasswordAuthentication\ yes/PasswordAuthentication\ no/ /etc/ssh/sshd_config
+    && sed -i s/^#PubkeyAuthentication/PubkeyAuthentication/ /etc/ssh/sshd_config
+    && sed -i s/^#PermitRootLogin\ prohibit-password/PermitRootLogin\ without-password/ /etc/ssh/sshd_config
 
 # This image expects AUTHORIZED_KEYS environment variable to contain your ssh public key.
 
