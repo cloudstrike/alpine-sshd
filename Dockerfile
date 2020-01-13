@@ -2,7 +2,7 @@ FROM alpine:latest
 
 # ssh-keygen -A generates all necessary host keys (rsa, dsa, ecdsa, ed25519) at default location.
 RUN  apk update \
-    && apk add openssh curl vim \
+    && apk add openssh curl vim iputils\
     && mkdir /root/.ssh \
     && chmod 0700 /root/.ssh \
     && ssh-keygen -A \
