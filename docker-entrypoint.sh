@@ -7,6 +7,7 @@ if [ -z "${AUTHORIZED_KEYS}" ]; then
 fi
 
 adduser --disabled-password --gecos "" "${SSH_USER}"
+passwd -u "${SSH_USER}"
 mkdir -p /home/"${SSH_USER}"/.ssh
 
 echo "Populating /root/.ssh/authorized_keys with the key downloaded from AUTHORIZED_KEYS env variable ..."
